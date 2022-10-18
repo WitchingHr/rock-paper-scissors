@@ -14,23 +14,18 @@ console.log(`Computer picks: ${getComputerChoice()}`);
 
 function playerChoice() {
     let x = prompt('Type your weapon', 'Rock, Paper or Scissors');
+    x = x.toLowerCase();
 
     switch (x) {
-        case 'Rock':
         case 'rock':
-        case 'ROCK':
             console.log('Player picks: Rock')
             return 'Rock';
             break;
-        case 'Paper':
         case 'paper':
-        case 'PAPER':
             console.log('Player picks: Paper')
             return 'Paper';
             break;
-        case 'Scissors':
         case 'scissors':
-        case 'SCISSORS':
             console.log('Player picks: Scissors')
             return 'Scissors';
             break;

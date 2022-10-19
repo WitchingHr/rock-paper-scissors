@@ -1,3 +1,5 @@
+//Choices
+
 function getComputerChoice() {
     let x = Math.floor(Math.random() * 3);
 
@@ -36,58 +38,85 @@ function playerChoice() {
     }
 }
 
-let playerWeapon = playerChoice();
-let compWeapon = getComputerChoice();
 
 //Comparison:
 
-let playWeight = 1;
-let compWeight;
+function comparison() {
+    let playerWeapon = playerChoice();
+    let compWeapon = getComputerChoice();
 
-if (playerWeapon === 'Rock') {
+    if (playerWeapon === 'Rock') {
 
-    if (compWeapon === 'Rock') {
-        compWeight = 1;
-    } else if (compWeapon === 'Paper') {
-        compWeight = 2;
+        if (compWeapon === 'Rock') {
+            compWeight = 1;
+        } else if (compWeapon === 'Paper') {
+            compWeight = 2;
+        } else {
+            compWeight = 0;
+        }
+
+    } else if (playerWeapon === 'Paper') {
+
+        if (compWeapon === 'Rock') {
+            compWeight = 0;
+        } else if (compWeapon === 'Paper') {
+            compWeight = 1;
+        } else {
+            compWeight = 2;
+        }
+
     } else {
-        compWeight = 0;
+
+        if (compWeapon === 'Rock') {
+            compWeight = 2;
+        } else if (compWeapon === 'Paper') {
+            compWeight = 0;
+        } else {
+            compWeight = 1;
+        }
+
     }
 
-} else if (playerWeapon === 'Paper') {
-
-    if (compWeapon === 'Rock') {
-        compWeight = 0;
-    } else if (compWeapon === 'Paper') {
-        compWeight = 1;
-    } else {
-        compWeight = 2;
-    }
-
-} else {
-
-    if (compWeapon === 'Rock') {
-        compWeight = 2;
-    } else if (compWeapon === 'Paper') {
-        compWeight = 0;
-    } else {
-        compWeight = 1;
-    }
+    return compWeight;
 
 }
 
-console.log(compWeight);
 
-// for loop: game repeats until counter = 5
+//Run:
 
-//Score counter
-//if player beats computer,
-//add 1 to player score
-//if computer beats player,
-//add 1 to computer score
+function run() {
 
-//Win condition
-//if player counter = 5,
-//player wins
-//if computer counter = 5,
-//computer wins
+    let playWeight = 1;
+
+    comparison();
+    
+    if (playWeight > compWeight) {
+        return playScore += 1;
+    } else if (playWeight < compWeight) {
+        return compScore += 1;
+    } else {
+        return;
+    }
+    
+}
+
+
+//Score:
+
+let playScore = 0;
+let compScore = 0;
+
+while (playScore < 5 || compScore < 5) {
+    run();
+    console.log(`Player score: ${playScore}`);
+    console.log(`Computer score: ${compScore}`);
+
+}
+
+if (playScore === 5) {
+    alert('You win!');
+}
+
+if (compScore === 5) {
+    alert('You lose. Please try again.');
+}

@@ -1,4 +1,4 @@
-//Choices
+//Get choices
 
 function getComputerChoice() {
     let x = Math.floor(Math.random() * 3);
@@ -15,7 +15,7 @@ function getComputerChoice() {
     }
 }
 
-function playerChoice() {
+function getPlayerChoice() {
     let x = prompt('Type your weapon', 'Rock, Paper or Scissors');
     x = x.toLowerCase();
 
@@ -34,66 +34,65 @@ function playerChoice() {
             break;
         default:
             alert('Choice not recognized. Choose again');
-            playerChoice();
+            getPlayerChoice();
     }
 }
 
 
-//Comparison:
+//Compare choices, return weight:
 
-function comparison() {
-    let pWeapon = playerChoice();
-    let compWeapon = getComputerChoice();
+function getComputerWeight() {
+    let playerChoice = getPlayerChoice();
+    let computerChoice = getComputerChoice();
 
-    if (pWeapon === 'Rock') {
+    if (playerChoice === 'Rock') {
 
-        if (compWeapon === 'Rock') {
-            compWeight = 1;
-        } else if (compWeapon === 'Paper') {
-            compWeight = 2;
+        if (computerChoice === 'Rock') {
+            computerWeight = 1;
+        } else if (computerChoice === 'Paper') {
+            computerWeight = 2;
         } else {
-            compWeight = 0;
+            computerWeight = 0;
         }
 
-    } else if (pWeapon === 'Paper') {
+    } else if (playerChoice === 'Paper') {
 
-        if (compWeapon === 'Rock') {
-            compWeight = 0;
-        } else if (compWeapon === 'Paper') {
-            compWeight = 1;
+        if (computerChoice === 'Rock') {
+            computerWeight = 0;
+        } else if (computerChoice === 'Paper') {
+            computerWeight = 1;
         } else {
-            compWeight = 2;
+            computerWeight = 2;
         }
 
     } else {
 
-        if (compWeapon === 'Rock') {
-            compWeight = 2;
-        } else if (compWeapon === 'Paper') {
-            compWeight = 0;
+        if (computerChoice === 'Rock') {
+            computerWeight = 2;
+        } else if (computerChoice === 'Paper') {
+            computerWeight = 0;
         } else {
-            compWeight = 1;
+            computerWeight = 1;
         }
 
     }
 
-    return compWeight;
+    return computerWeight;
 
 }
 
 
-//Run:
+//Compare weights, update score:
 
-function run() {
+function playRound() {
 
-    let pWeight = 1;
-
-    comparison();
+    const playerWeight = 1;
+    getComputerWeight();
     
-    if (pWeight > compWeight) {
-        return pScore += 1;
-    } else if (pWeight < compWeight) {
-        return compScore += 1;
+    if (playerWeight > computerWeight) {
+        return playerScore += 1;
+    } else if (playerWeight < computerWeight) {
+        return computerScore += 1;
     } else {
         return;
     }
@@ -101,22 +100,22 @@ function run() {
 }
 
 
-//Score:
+//Track score, win condition:
 
-let pScore = 0;
-let compScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-while (pScore < 5 && compScore < 5) {
-    run();
-    console.log(`Player score: ${pScore}`);
-    console.log(`Computer score: ${compScore}`);
+while (playerScore < 5 && computerScore < 5) {
+    playRound();
+    console.log(`Player score: ${playerScore}`);
+    console.log(`Computer score: ${computerScore}`);
 
-    if (pScore === 5) {
+    if (playerScore === 5) {
     alert('You win!');
     break;
     }
 
-    if (compScore === 5) {
+    if (computerScore === 5) {
     alert('You lose. Please try again.');
     break;
     }

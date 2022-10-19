@@ -6,3 +6,4 @@ What I learned:
 - Gain general understanding of scope when using functions
 - Basic function declaration and callback
 - Making use of while loop
+- Standard clean code conventions

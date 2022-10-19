@@ -111,12 +111,15 @@ while (playScore < 5 || compScore < 5) {
     console.log(`Player score: ${playScore}`);
     console.log(`Computer score: ${compScore}`);
 
-}
-
-if (playScore === 5) {
+    if (playScore === 5) {
     alert('You win!');
+    break;
+    }
+
+    if (compScore === 5) {
+    alert('You lose. Please try again.');
+    break;
+    }
+
 }
 
-if (compScore === 5) {
-    alert('You lose. Please try again.');
-}

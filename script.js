@@ -42,10 +42,10 @@ function playerChoice() {
 //Comparison:
 
 function comparison() {
-    let playerWeapon = playerChoice();
+    let pWeapon = playerChoice();
     let compWeapon = getComputerChoice();
 
-    if (playerWeapon === 'Rock') {
+    if (pWeapon === 'Rock') {
 
         if (compWeapon === 'Rock') {
             compWeight = 1;
@@ -55,7 +55,7 @@ function comparison() {
             compWeight = 0;
         }
 
-    } else if (playerWeapon === 'Paper') {
+    } else if (pWeapon === 'Paper') {
 
         if (compWeapon === 'Rock') {
             compWeight = 0;
@@ -86,13 +86,13 @@ function comparison() {
 
 function run() {
 
-    let playWeight = 1;
+    let pWeight = 1;
 
     comparison();
     
-    if (playWeight > compWeight) {
-        return playScore += 1;
-    } else if (playWeight < compWeight) {
+    if (pWeight > compWeight) {
+        return pScore += 1;
+    } else if (pWeight < compWeight) {
         return compScore += 1;
     } else {
         return;
@@ -103,15 +103,15 @@ function run() {
 
 //Score:
 
-let playScore = 0;
+let pScore = 0;
 let compScore = 0;
 
-while (playScore < 5 && compScore < 5) {
+while (pScore < 5 && compScore < 5) {
     run();
-    console.log(`Player score: ${playScore}`);
+    console.log(`Player score: ${pScore}`);
     console.log(`Computer score: ${compScore}`);
 
-    if (playScore === 5) {
+    if (pScore === 5) {
     alert('You win!');
     break;
     }

@@ -106,7 +106,7 @@ function run() {
 let playScore = 0;
 let compScore = 0;
 
-while (playScore < 5 || compScore < 5) {
+while (playScore < 5 && compScore < 5) {
     run();
     console.log(`Player score: ${playScore}`);
     console.log(`Computer score: ${compScore}`);

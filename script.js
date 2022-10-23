@@ -14,31 +14,29 @@ function getComputerChoice() {
   return 'Scissors';
 }
 
-function getPlayerChoice() {
-  let choice = prompt('Type your weapon', 'Rock, Paper or Scissors');
-  choice = choice.toLowerCase();
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', (e) => {
+  const choice = e.target.textContent;
 
   switch (choice) {
-    case 'rock':
+    case '✊':
       console.log('Player picks: Rock');
-      return 'Rock';
-    case 'paper':
+      return playerChoice = 'Rock';
+    case '✋':
       console.log('Player picks: Paper');
-      return 'Paper';
-    case 'scissors':
+      return playerChoice = 'Paper';
+    case '✌️':
       console.log('Player picks: Scissors');
-      return 'Scissors';
-    default:
-      alert('Choice not recognized. Choose again');
-      getPlayerChoice();
+      return playerChoice = 'Scissors';
   }
-}
+
+  getComputerWeight();
+}));
 
 // Compare choices, return weight:
 let computerWeight;
 
 function getComputerWeight() {
-  const playerChoice = getPlayerChoice();
   const computerChoice = getComputerChoice();
 
   if (playerChoice === 'Rock') {
@@ -88,7 +86,7 @@ function playRound() {
 let playerScore = 0;
 let computerScore = 0;
 
-while (playerScore < 5 && computerScore < 5) {
+/* while (playerScore < 5 && computerScore < 5) {
   playRound();
   console.log(`Player score: ${playerScore}`);
   console.log(`Computer score: ${computerScore}`);
@@ -103,3 +101,4 @@ while (playerScore < 5 && computerScore < 5) {
     break;
   }
 }
+*/

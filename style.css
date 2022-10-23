@@ -1,0 +1,13 @@
+div.buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    font-size: 4rem;
+    padding: 3rem;
+}
+
+.scores {
+    font-size: 2rem;
+}

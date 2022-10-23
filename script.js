@@ -93,19 +93,25 @@ function playRound(e) {
     playerScore += 1;
     printPlayerScore();
     if (playerScore === 5) {
-      alert('You Win');
+      confirm('You Win!\nPlay again?');
+      if (confirm) {
+        resetGame();
+      }
     }
   }
   if (playerWeight < computerWeight) {
     computerScore += 1;
     printComputerScore();
     if (computerScore === 5) {
-      alert('You Lose');
+      confirm('You Lose!\nTry again?');
+      if (confirm) {
+        resetGame();
+      }
     }
   }
 }
 
-// Message box
+// Message Box
 
 function printMessage() {
   const p = document.querySelector('.message');
@@ -120,4 +126,18 @@ function printMessage() {
     b.textContent = `TIE!`
   }
   
+}
+
+// Reset Game
+
+function resetGame() {
+  playerScore = 0;
+  printPlayerScore();
+  computerScore = 0;
+  printComputerScore();
+
+  const p = document.querySelector('.message');
+  p.textContent = '';
+  const b = document.querySelector('.beats');
+  b.textContent = '';
 }

@@ -5,12 +5,15 @@ function getComputerChoice() {
 
   if (x === 0) {
     console.log('Computer picks: Rock');
+    printComputerChoice('Rock');
     return 'Rock';
   } if (x === 1) {
     console.log('Computer picks: Paper');
+    printComputerChoice('Paper');
     return 'Paper';
   }
   console.log('Computer picks: Scissors');
+  printComputerChoice('Scissors');
   return 'Scissors';
 }
 let playerChoice;
@@ -22,17 +25,28 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
   switch (choice) {
     case '✊':
       console.log('Player picks: Rock');
+      printPlayerChoice('Rock');
       return playerChoice = 'Rock';
     case '✋':
       console.log('Player picks: Paper');
+      printPlayerChoice('Paper');
       return playerChoice = 'Paper';
     case '✌️':
       console.log('Player picks: Scissors');
+      printPlayerChoice('Scissors');
       return playerChoice = 'Scissors';
   }
-
-  
 }));
+
+function printComputerChoice(weapon) {
+  const p = document.querySelector('.computer-choice');
+  p.textContent = `Computer selects: ${weapon}`;
+}
+
+function printPlayerChoice(weapon) {
+  const p = document.querySelector('.player-choice');
+  p.textContent = `Player selects: ${weapon}`;
+}
 
 // Compare choices, return weight:
 let computerWeight;
@@ -83,6 +97,7 @@ function playRound() {
 }
 
 // Track score, win condition:
+
 
 let playerScore = 0;
 let computerScore = 0;

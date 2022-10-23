@@ -109,5 +109,15 @@ function playRound(e) {
 
 function printMessage() {
   const p = document.querySelector('.message');
-  p.textContent = `Player selects ${playerChoice} and Computer selects ${computerChoice}`;
+  p.textContent = `Player selects ${playerChoice} and Computer selects ${computerChoice}...`;
+
+  const b = document.querySelector('.beats');
+  if (1 > computerWeight){
+    b.textContent = `${playerChoice} beats ${computerChoice}!`;
+  } else if (1 < computerWeight) {
+    b.textContent = `${playerChoice} loses to ${computerChoice}!`
+  } else {
+    b.textContent = `TIE!`
+  }
+  
 }

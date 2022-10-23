@@ -1,4 +1,4 @@
-// Play Round:
+// Event Listener:
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => button.addEventListener('click', (e) => {
@@ -12,15 +12,12 @@ function getPlayerChoice(e) {
   const choice = e.target.textContent;
   switch (choice) {
     case '✊':
-      console.log('Player picks: Rock');
       printPlayerChoice('Rock');
       return playerChoice = 'Rock';
     case '✋':
-      console.log('Player picks: Paper');
       printPlayerChoice('Paper');
       return playerChoice = 'Paper';
     case '✌️':
-      console.log('Player picks: Scissors');
       printPlayerChoice('Scissors');
       return playerChoice = 'Scissors';
   }
@@ -31,15 +28,12 @@ function getComputerChoice() {
   const x = Math.floor(Math.random() * 3);
 
   if (x === 0) {
-    console.log('Computer picks: Rock');
     printComputerChoice('Rock');
     return 'Rock';
   } if (x === 1) {
-    console.log('Computer picks: Paper');
     printComputerChoice('Paper');
     return 'Paper';
   }
-  console.log('Computer picks: Scissors');
   printComputerChoice('Scissors');
   return 'Scissors';
 }
@@ -55,7 +49,7 @@ function printPlayerChoice(weapon) {
   p.textContent = `Player selects: ${weapon}`;
 }
 
-// Compare choices, return weight:
+// Get Weight:
 let computerWeight;
 
 function getComputerWeight() {
@@ -104,37 +98,25 @@ function printComputerScore() {
   p.textContent = `${computerScore}`;
 }
 
-/* while (playerScore < 5 && computerScore < 5) {
-  playRound();
-  console.log(`Player score: ${playerScore}`);
-  console.log(`Computer score: ${computerScore}`);
-
-  if (playerScore === 5) {
-    alert('You win!');
-    break;
-  }
-
-  if (computerScore === 5) {
-    alert('You lose. Please try again.');
-    break;
-  }
-}
-*/
-
-// Compare weights, update score:
+// Compare Weights, Update Score:
 
 function playRound(e) {
   getPlayerChoice(e);
   const playerWeight = 1;
   getComputerWeight();
-  console.log(`Computer weight: ${computerWeight}`);
 
   if (playerWeight > computerWeight) {
     playerScore += 1;
     printPlayerScore();
+    if (playerScore === 5) {
+      alert('You Win');
+    }
   }
   if (playerWeight < computerWeight) {
     computerScore += 1;
     printComputerScore();
+    if (computerScore === 5) {
+      alert('You Lose');
+    }
   }
 }

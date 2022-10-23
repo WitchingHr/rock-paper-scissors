@@ -13,11 +13,12 @@ function getComputerChoice() {
   console.log('Computer picks: Scissors');
   return 'Scissors';
 }
+let playerChoice;
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', (e) => {
   const choice = e.target.textContent;
-
+  getComputerWeight();
   switch (choice) {
     case '✊':
       console.log('Player picks: Rock');
@@ -30,7 +31,7 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
       return playerChoice = 'Scissors';
   }
 
-  getComputerWeight();
+  
 }));
 
 // Compare choices, return weight:

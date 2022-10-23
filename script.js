@@ -1,4 +1,4 @@
-// Event Listener:
+// Event Listener, Starts Round:
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => button.addEventListener('click', (e) => {
@@ -12,13 +12,10 @@ function getPlayerChoice(e) {
   const choice = e.target.textContent;
   switch (choice) {
     case '✊':
-      printPlayerChoice('Rock');
       return playerChoice = 'Rock';
     case '✋':
-      printPlayerChoice('Paper');
       return playerChoice = 'Paper';
     case '✌️':
-      printPlayerChoice('Scissors');
       return playerChoice = 'Scissors';
   }
 }
@@ -28,32 +25,18 @@ function getComputerChoice() {
   const x = Math.floor(Math.random() * 3);
 
   if (x === 0) {
-    printComputerChoice('Rock');
     return 'Rock';
   } if (x === 1) {
-    printComputerChoice('Paper');
     return 'Paper';
   }
-  printComputerChoice('Scissors');
   return 'Scissors';
-}
-
-// Print Choices:
-function printComputerChoice(weapon) {
-  const p = document.querySelector('.computer-choice');
-  p.textContent = `Computer selects: ${weapon}`;
-}
-
-function printPlayerChoice(weapon) {
-  const p = document.querySelector('.player-choice');
-  p.textContent = `Player selects: ${weapon}`;
 }
 
 // Get Weight:
 let computerWeight;
-
+let computerChoice;
 function getComputerWeight() {
-  const computerChoice = getComputerChoice();
+  computerChoice = getComputerChoice();
 
   if (playerChoice === 'Rock') {
     if (computerChoice === 'Rock') {
@@ -104,6 +87,7 @@ function playRound(e) {
   getPlayerChoice(e);
   const playerWeight = 1;
   getComputerWeight();
+  printMessage();
 
   if (playerWeight > computerWeight) {
     playerScore += 1;
@@ -119,4 +103,11 @@ function playRound(e) {
       alert('You Lose');
     }
   }
+}
+
+// Message box
+
+function printMessage() {
+  const p = document.querySelector('.message');
+  p.textContent = `Player selects ${playerChoice} and Computer selects ${computerChoice}`;
 }

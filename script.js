@@ -1,5 +1,32 @@
-// Get choices
+// Play Round:
+const buttons = document.querySelectorAll('button');
 
+buttons.forEach(button => button.addEventListener('click', (e) => {
+  playRound(e);
+}));
+
+// Get Player Choice:
+let playerChoice;
+
+function getPlayerChoice(e) {
+  const choice = e.target.textContent;
+  switch (choice) {
+    case '✊':
+      console.log('Player picks: Rock');
+      printPlayerChoice('Rock');
+      return playerChoice = 'Rock';
+    case '✋':
+      console.log('Player picks: Paper');
+      printPlayerChoice('Paper');
+      return playerChoice = 'Paper';
+    case '✌️':
+      console.log('Player picks: Scissors');
+      printPlayerChoice('Scissors');
+      return playerChoice = 'Scissors';
+  }
+}
+
+// Get Computer Choice:
 function getComputerChoice() {
   const x = Math.floor(Math.random() * 3);
 
@@ -16,28 +43,8 @@ function getComputerChoice() {
   printComputerChoice('Scissors');
   return 'Scissors';
 }
-let playerChoice;
 
-const buttons = document.querySelectorAll('button');
-buttons.forEach(button => button.addEventListener('click', (e) => {
-  const choice = e.target.textContent;
-  getComputerWeight();
-  switch (choice) {
-    case '✊':
-      console.log('Player picks: Rock');
-      printPlayerChoice('Rock');
-      return playerChoice = 'Rock';
-    case '✋':
-      console.log('Player picks: Paper');
-      printPlayerChoice('Paper');
-      return playerChoice = 'Paper';
-    case '✌️':
-      console.log('Player picks: Scissors');
-      printPlayerChoice('Scissors');
-      return playerChoice = 'Scissors';
-  }
-}));
-
+// Print Choices:
 function printComputerChoice(weapon) {
   const p = document.querySelector('.computer-choice');
   p.textContent = `Computer selects: ${weapon}`;
@@ -82,25 +89,20 @@ function getComputerWeight() {
   return computerWeight;
 }
 
-// Compare weights, update score:
-
-function playRound() {
-  const playerWeight = 1;
-  getComputerWeight();
-
-  if (playerWeight > computerWeight) {
-    return playerScore += 1;
-  }
-  if (playerWeight < computerWeight) {
-    return computerScore += 1;
-  }
-}
-
 // Track score, win condition:
-
 
 let playerScore = 0;
 let computerScore = 0;
+
+function printPlayerScore() {
+  const p = document.querySelector('.update-player-score');
+  p.textContent = `${playerScore}`;
+}
+
+function printComputerScore() {
+  const p = document.querySelector('.update-computer-score');
+  p.textContent = `${computerScore}`;
+}
 
 /* while (playerScore < 5 && computerScore < 5) {
   playRound();
@@ -118,3 +120,21 @@ let computerScore = 0;
   }
 }
 */
+
+// Compare weights, update score:
+
+function playRound(e) {
+  getPlayerChoice(e);
+  const playerWeight = 1;
+  getComputerWeight();
+  console.log(`Computer weight: ${computerWeight}`);
+
+  if (playerWeight > computerWeight) {
+    playerScore += 1;
+    printPlayerScore();
+  }
+  if (playerWeight < computerWeight) {
+    computerScore += 1;
+    printComputerScore();
+  }
+}

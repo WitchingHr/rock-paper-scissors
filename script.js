@@ -2,6 +2,7 @@
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => button.addEventListener('click', (e) => {
+  playSound();
   playRound(e);
 }));
 
@@ -140,4 +141,12 @@ function resetGame() {
   p.textContent = '';
   const b = document.querySelector('.beats');
   b.textContent = '';
+}
+
+// Sound
+
+function playSound() {
+  const audio = document.querySelector('audio');
+  audio.currentTime = 0;
+  audio.play();
 }

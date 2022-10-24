@@ -83,7 +83,6 @@ function printComputerScore() {
 }
 
 // Compare Weights, Update Score:
-
 function playRound(e) {
   getPlayerChoice(e);
   const playerWeight = 1;
@@ -93,30 +92,21 @@ function playRound(e) {
   if (playerWeight > computerWeight) {
     playerScore += 1;
     printPlayerScore();
-    if (playerScore === 5) {
-      confirm('You Win!\nPlay again?');
-      if (confirm) {
-        resetGame();
-      }
-    }
   }
   if (playerWeight < computerWeight) {
     computerScore += 1;
     printComputerScore();
-    if (computerScore === 5) {
-      confirm('You Lose!\nTry again?');
-      if (confirm) {
-        resetGame();
-      }
-    }
+  }
+
+  if (playerScore === 5 || computerScore === 5) {
+    openModal();
   }
 }
 
 // Message Box
-
 function printMessage() {
   const p = document.querySelector('.message');
-  p.textContent = `Player selects ${playerChoice} and Computer selects ${computerChoice}...`;
+  p.innerHTML = `Player selects <strong>${playerChoice}</strong> and Computer selects <strong>${computerChoice}</strong>...`;
 
   const b = document.querySelector('.beats');
   if (1 > computerWeight){
@@ -130,7 +120,6 @@ function printMessage() {
 }
 
 // Reset Game
-
 function resetGame() {
   playerScore = 0;
   printPlayerScore();
@@ -138,15 +127,44 @@ function resetGame() {
   printComputerScore();
 
   const p = document.querySelector('.message');
-  p.textContent = '';
+  p.innerHTML = '<br>';
   const b = document.querySelector('.beats');
-  b.textContent = '';
+  b.innerHTML = '<br>';
 }
 
 // Sound
-
 function playSound() {
   const audio = document.querySelector('audio');
   audio.currentTime = 0;
   audio.play();
+}
+
+// Modal
+const modal = document.querySelector('.modal');
+
+function openModal() {
+  modal.style.display = 'block';
+  if (playerScore === 5) {
+    const p = document.querySelector('.win');
+    p.textContent = 'Congratulations, You Won!';
+  }
+  if (computerScore === 5) {
+    const p = document.querySelector('.win');
+    p.textContent = 'You Lost! Yikes.';
+  }
+}
+
+window.onclick = function(e) {
+  if (e.target == modal) {
+    modal.style.display = 'none';
+    playSound();
+    resetGame();
+  }
+}
+
+const span = document.getElementsByClassName('close')[0];
+span.onclick = function() {
+  modal.style.display = 'none';
+  playSound();
+  resetGame();
 }

@@ -9,22 +9,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="scores">
-        <p>Player: <span class="update-player-score">0</span></p>
-        <p>Computer: <span class="update-computer-score">0</span></p>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p class="win"></p>
+        </div>
     </div>
-    <div class="choices">
-        <p class="computer-choice"></p>
-        <p class="player-choice"></p>
-    </div>
-    <div class="message-box">
-        <p class="message"></p>
-        <p class="beats"></p>
-    </div>
-    <div class="buttons">
-        <button class="rock">✊</button>
-        <button class="paper">✋</button>
-        <button class="scissors">✌️</button>
+    <div class="flex-wrapper">
+        <div class="content">
+            <div class="header">
+                <h1>Rock Paper Scissors</h1>
+                <p>First to 5 wins</p>
+            </div>
+            <div class="scores">
+                <span>Player: <span class="update-player-score">0</span></span>
+                <span>Computer: <span class="update-computer-score">0</span></span>
+            </div>
+            <div class="message-box">
+                <p class="message"><br></p>
+                <p class="beats"><br></p>
+            </div>
+            <div class="buttons">
+                <button class="rock">✊</button>
+                <button class="paper">✋</button>
+                <button class="scissors">✌️</button>
+            </div>
+        </div>
+        <div class="footer">
+            <span>Copyright © WitchingHr 2022</span>
+            <span><a href="https://www.freepik.com/free-vector/crumpled-blue-checkered-paper-texture-realisric_29567568.htm#page=3&position=36&from_view=author">Image by upklyak</a> on Freepik</span>
+        </div>
     </div>
 
     <audio src="click.wav"></audio>

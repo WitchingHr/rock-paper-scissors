@@ -1,4 +1,6 @@
 # rock-paper-scissors
+<img width="1470" alt="Screenshot 2023-01-26 at 5 36 17 PM" src="https://user-images.githubusercontent.com/41353202/214966402-b337ac57-3b71-42bc-b57e-7600fb2aa43f.png">
+
 Rock Paper Scissors game created for Odin Project Foundations course
 
 **What I learned:**
